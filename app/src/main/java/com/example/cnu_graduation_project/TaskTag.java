@@ -13,4 +13,6 @@ public class TaskTag {
      */
     public static boolean ACTIVITY_TAG=true;
 
+    static public int VIBRATION_TAG=0;
+
 }
