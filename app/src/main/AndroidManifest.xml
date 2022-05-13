@@ -19,7 +19,7 @@
             android:name=".Permission.PermissionRationalActivity"
             android:label="title_activity_permission_rational"/>
         <activity
-            android:name=".ClientActivity"
+            android:name=".Lock.LockActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Lock.LockActivity"/>
+        <activity android:name=".ClientActivity"/>
         <receiver android:name=".Lock.LockReceiver"/>
         <service android:name=".Lock.LockService"/>
     </application>

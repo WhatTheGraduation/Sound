@@ -16,11 +16,19 @@ package com.example.cnu_graduation_project;
  */
 
 import android.os.Bundle;
+import android.util.Log;
+
+import com.example.cnu_graduation_project.Service.FeedbackActivity;
+
 /**
  * Demos enabling/disabling Activity Recognition transitions, e.g., starting or stopping a walk,
  * run, drive, etc.).
  */
-public class ClientActivity extends DrivingRecognitionActivity {
+
+/**
+ * 사용자 페이
+ */
+public class ClientActivity extends FeedbackActivity {
 
     String TAG = "ClientActivity";
     @Override
@@ -29,17 +37,18 @@ public class ClientActivity extends DrivingRecognitionActivity {
         /**
          * 운전 상태 인식시에
          */
-        if(ACTIVITY_TAG) {
-
-
-
+        if(TaskTag.ACTIVITY_TAG&&TaskTag.WINDOW_ON) {
+            Log.d(TAG,"vibration");
+            startVibration();
         } else {
-
-
         }
+        Log.d(TAG,"Create");
     }
     @Override
     protected void onStop() {
         super.onStop();
+        if(TaskTag.ACTIVITY_TAG&&!TaskTag.WINDOW_ON) {
+//            stopVibration();
+        }
     }
 }

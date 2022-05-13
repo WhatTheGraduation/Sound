@@ -40,8 +40,7 @@ import java.util.Locale;
 
 public class DrivingRecognitionActivity extends AppCompatActivity{
 
-    public static boolean ACTIVITY_TAG=true;
-    private final static String TAG = "MainActivity";
+    private final static String TAG = "DrivingRecognitionActivity";
 
     // TODO: Review check for devices with Android 10 (29+).
     private boolean runningQOrLater =
@@ -64,19 +63,19 @@ public class DrivingRecognitionActivity extends AppCompatActivity{
         switch (activity) {
             case DetectedActivity.IN_VEHICLE:
                 startService(intent);
-                ACTIVITY_TAG=true;
+                TaskTag.ACTIVITY_TAG=true;
                 return "IN_VEHICLE";
             case DetectedActivity.WALKING:
                 startService(intent);
-                ACTIVITY_TAG=true;
+                TaskTag.ACTIVITY_TAG=true;
                 return "WALKING";
             case DetectedActivity.STILL:
-                ACTIVITY_TAG=false;
+                TaskTag.ACTIVITY_TAG=false;
                 stopService(intent);
                 return "STILL";
             default:
                 stopService(intent);
-                ACTIVITY_TAG=false;
+                TaskTag.ACTIVITY_TAG=false;
                 return "UNKNOWN";
         }
     }
@@ -85,7 +84,7 @@ public class DrivingRecognitionActivity extends AppCompatActivity{
 
         switch (transitionType) {
             case ActivityTransition.ACTIVITY_TRANSITION_ENTER:
-//                ACTIVITY_TAG=true;
+                TaskTag.ACTIVITY_TAG=true;
 
                 return "ENTER";
             case ActivityTransition.ACTIVITY_TRANSITION_EXIT:
@@ -93,7 +92,7 @@ public class DrivingRecognitionActivity extends AppCompatActivity{
                 /**
                  * 해제와 동시에 백그라운드 종료
                  */
-//                ACTIVITY_TAG=false;
+                TaskTag.ACTIVITY_TAG=false;
                 return "EXIT";
             default:
                 return "UNKNOWN";
@@ -145,6 +144,9 @@ public class DrivingRecognitionActivity extends AppCompatActivity{
 
         printToScreen("App initialized.");
         enableActivityTransitions();
+        Intent lock = new Intent(getApplicationContext(), LockService.class);
+        startService(lock);
+        Log.d(TAG,"Create");
 
     }
 

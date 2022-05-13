@@ -1,14 +1,19 @@
 package com.example.cnu_graduation_project.Lock;
 
+import static com.example.cnu_graduation_project.TaskTag.WINDOW_ON;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Vibrator;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
 import com.example.cnu_graduation_project.Lock.LockActivity;
+
+import java.util.TimerTask;
 
 public class LockReceiver extends BroadcastReceiver {
     String TAG="LockReceiver";
@@ -23,9 +28,19 @@ public class LockReceiver extends BroadcastReceiver {
             /**
              * 화면 종료 인식시 리시버 호출
              */
+            WINDOW_ON=false;
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
-            Log.d(TAG,"Start?");
+            Log.d(TAG,"Screen"+WINDOW_ON);
+        }
+        if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+            Log.d(TAG, "Screen On");
+
+            /**
+             * 화면 종료 인식시 리시버 호출
+             */
+            WINDOW_ON=true;
+            Log.d(TAG,"Screen"+WINDOW_ON);
         }
     }
 

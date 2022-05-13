@@ -1,6 +1,6 @@
 package com.example.cnu_graduation_project.Lock;
 
-import static com.example.cnu_graduation_project.DrivingRecognitionActivity.ACTIVITY_TAG;
+import static com.example.cnu_graduation_project.TaskTag.ACTIVITY_TAG;
 
 import android.app.Activity;
 import android.app.KeyguardManager;
@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import com.example.cnu_graduation_project.ClientActivity;
 import com.example.cnu_graduation_project.R;
 
 /**
@@ -28,8 +29,12 @@ import com.example.cnu_graduation_project.R;
  * 잠금화면 자체를 다루는 엑티비티
  *
  *
+ * 상속 과정
+ *
+ *  DrivingRecongnitionActivity --> FeedbackActivity --> ClientActivity --> LockActivity
+ *
  */
-public class LockActivity extends Activity {
+public class LockActivity extends ClientActivity {
     static String TAG ="LockActivity";
     public static int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE= 2323;
 
@@ -63,6 +68,7 @@ public class LockActivity extends Activity {
             km.requestDismissKeyguard(this,null);
 
         }
+
 
     }
 

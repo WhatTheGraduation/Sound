@@ -25,6 +25,7 @@ public class LockService extends Service {
          * 스크린이 꺼짐을 감지하는 리시버 등록
          */
         IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
+        filter.addAction(Intent.ACTION_SCREEN_ON);
         registerReceiver(mReceiver, filter);
     }
 
@@ -39,6 +40,7 @@ public class LockService extends Service {
                 if(mReceiver==null){
                     mReceiver = new LockReceiver();
                     IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
+                    filter.addAction(Intent.ACTION_SCREEN_ON);
                     registerReceiver(mReceiver, filter);
                 }
             }
