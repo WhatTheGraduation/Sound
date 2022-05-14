@@ -19,14 +19,13 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.cnu_graduation_project.Service.VibrationActivity;
-
 /**
  * Demos enabling/disabling Activity Recognition transitions, e.g., starting or stopping a walk,
  * run, drive, etc.).
  */
 
 /**
- * 사용자 페이
+ * 사용자 페이지
  */
 public class ClientActivity extends VibrationActivity {
 
@@ -34,21 +33,18 @@ public class ClientActivity extends VibrationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG,"Create");
         /**
          * 운전 상태 인식시에
          */
         if(TaskTag.ACTIVITY_TAG&&TaskTag.WINDOW_ON) {
-            Log.d(TAG,"vibration");
-            startVibration();
         } else {
         }
-        Log.d(TAG,"Create");
     }
     @Override
     protected void onStop() {
         super.onStop();
         if(TaskTag.ACTIVITY_TAG&&!TaskTag.WINDOW_ON) {
-//            stopVibration();
         }
     }
 }
